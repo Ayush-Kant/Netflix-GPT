@@ -10,15 +10,16 @@ const useTrailer = () => {
     const movieId = mainMovie?.id;
     console.log(movieId)
     const getTrailer = async () =>{
+        if(!movieId) return;
       const data = await fetch(`${API_BASE_URL}/api/movies/trailer/${movieId}`)
       const json = await data.json();
       console.log(json.results)
             const trailer =
-            json.results.find(
+            json.results?.find(
                 video =>
                 video.type === "Trailer" &&
                 video.site === "YouTube"
-            ) || json.results[0];
+            ) || json?.results[0];
 
             dispatch(addTrailer(trailer));
                 } 

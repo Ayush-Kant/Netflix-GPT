@@ -47,7 +47,28 @@ router.get("/trailer/:movieId", async (req, res) => {
 
         res.status(500).json({
             success: false,
-            message: "Failed to fetch movies"
+            message: "Failed to fetch trailer"
+        });
+    }
+
+});
+router.get("/movie/:posterPath", async (req, res) => {
+    try {
+        const  { posterPath } = req.params; 
+        const response = await axios.get(
+            `https://image.tmdb.org/t/p${posterPath}`,
+            options
+        );
+
+        res.status(200).json(response.data);
+
+    } catch (error) {
+
+        console.error(error.message);
+
+        res.status(500).json({
+            success: false,
+            message: "Failed to fetch poster"
         });
     }
 

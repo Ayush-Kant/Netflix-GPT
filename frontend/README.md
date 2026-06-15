@@ -25,6 +25,16 @@ Bug Fix: if the user is not logged in Redirect "/browse" to Login Page and vice-
 - Restructured folders into seperate frontend-backend architecture for modularity
 - connected my frontend to the backend by updating fetching links in my constants file
 -Testing by getting data from TMDB through backend i.e. Now Playing Movies list API
+- Custom hooks for Now playing movies and Trailer movie
+- Created movieSlice
+- Update store with movies Data (nowPlayingMovies )
+- Planning for MainContainer and SecondaryContainer
+- Fetch data for Trailer Video
+- Update store with Trailer Video Data in moviesSlice
+- Embedded the Youtube video dynamically using movie id and key from trailer video 
+- make the youtube video autoplay and mute to make it autoplay
+- Used Tailwind in MainContainer to look good  
+
 ---------
 # Features
 -----------
