@@ -29,6 +29,28 @@ router.get("/now-playing", async (req, res) => {
             message: "Failed to fetch movies"
         });
     }
+
+});
+router.get("/trailer/:movieId", async (req, res) => {
+    try {
+        const  { movieId } = req.params; 
+        const response = await axios.get(
+            `https://api.themoviedb.org/3/movie/${movieId}/videos`,
+            options
+        );
+
+        res.status(200).json(response.data);
+
+    } catch (error) {
+
+        console.error(error.message);
+
+        res.status(500).json({
+            success: false,
+            message: "Failed to fetch movies"
+        });
+    }
+
 });
 
 export default router;

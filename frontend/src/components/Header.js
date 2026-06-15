@@ -11,7 +11,7 @@ const Header = () => {
       const user = useSelector((store)=>store.user)
       const dispatch = useDispatch();
       const navigate = useNavigate();
-      const handleSIgnOut = ()=> {
+      const handleSignOut = ()=> {
               const auth = getAuth();
               signOut(auth).then(() => {
                 //anything after sign out like notification
@@ -54,7 +54,7 @@ const Header = () => {
       alt='logo'></img>
       {user && <div className='flex flex-row items-center'>
       <img src= {user.photoURL} className='w-20 m-2 p-2' alt='profile'></img>
-      <button className='bg-red-700 w-20 h-10 text-white rounded-3xl py-2 px-2 mx-2' onClick={handleSIgnOut}>Sign Out</button>
+      <button className='bg-red-700 w-20 h-10 text-white rounded-3xl py-2 px-2 mx-2' onClick={handleSignOut}>Sign Out</button>
     </div>}
     </div>
     
