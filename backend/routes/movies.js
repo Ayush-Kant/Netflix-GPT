@@ -4,74 +4,87 @@ import axios from "axios";
 const router = express.Router();
 
 const options = {
-    headers: {
-        accept: "application/json",
-        Authorization: `Bearer ${process.env.TMDB_BEARER_TOKEN}`
-    }
+  headers: {
+    accept: "application/json",
+    Authorization: `Bearer ${process.env.TMDB_BEARER_TOKEN}`,
+  },
 };
 
 router.get("/now-playing", async (req, res) => {
-    try {
+  try {
+    const response = await axios.get(
+      "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1",
+      options
+    );
 
-        const response = await axios.get(
-            "https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1",
-            options
-        );
+    res.status(200).json(response.data);
+  } catch (error) {
+    console.error(error.message);
 
-        res.status(200).json(response.data);
-
-    } catch (error) {
-
-        console.error(error.message);
-
-        res.status(500).json({
-            success: false,
-            message: "Failed to fetch movies"
-        });
-    }
-
+    res.status(500).json({
+      success: false,
+      message: "Failed to fetch movies",
+    });
+  }
 });
+
 router.get("/trailer/:movieId", async (req, res) => {
-    try {
-        const  { movieId } = req.params; 
-        const response = await axios.get(
-            `https://api.themoviedb.org/3/movie/${movieId}/videos`,
-            options
-        );
+  try {
+    const { movieId } = req.params;
 
-        res.status(200).json(response.data);
+    const response = await axios.get(
+      `https://api.themoviedb.org/3/movie/${movieId}/videos`,
+      options
+    );
 
-    } catch (error) {
+    res.status(200).json(response.data);
+  } catch (error) {
+    console.error(error.message);
 
-        console.error(error.message);
-
-        res.status(500).json({
-            success: false,
-            message: "Failed to fetch trailer"
-        });
-    }
-
+    res.status(500).json({
+      success: false,
+      message: "Failed to fetch trailer",
+    });
+  }
 });
-router.get("/movie/:posterPath", async (req, res) => {
-    try {
-        const  { posterPath } = req.params; 
-        const response = await axios.get(
-            `image.tmdb.org/t/p/w500${posterPath}`,
-            options
-        );
 
-        res.status(200).json(response.data);
+/*
+  Image Proxy Route
+  Example:
+  /movie?posterPath=/bRwnj8WEKBCvmfeUNOukJPwB43K.jpg
+*/
+router.get("/movie", async (req, res) => {
+  try {
+    const { posterPath } = req.query;
 
-    } catch (error) {
-
-        console.error(error.message);
-
-        res.status(500).json({
-            success: false,
-            message: "Failed to fetch poster"
-        });
+    if (!posterPath) {
+      return res.status(400).json({
+        success: false,
+        message: "posterPath is required",
+      });
     }
 
+    const imageResponse = await axios.get(
+      `https://image.tmdb.org/t/p/w500${posterPath}`,
+      {
+        responseType: "stream",
+      }
+    );
+
+    res.setHeader(
+      "Content-Type",
+      imageResponse.headers["content-type"]
+    );
+
+    imageResponse.data.pipe(res);
+  } catch (error) {
+    console.error(error.message);
+
+    res.status(500).json({
+      success: false,
+      message: "Failed to fetch poster",
+    });
+  }
 });
 
 export default router;
