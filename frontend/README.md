@@ -1,8 +1,14 @@
 # Netflix gpt
 - Create React app
 - Configured Tailwind Css
-- Login / Signup(just one field more in login)
+- Login / Signup (just few field more in same login using a toggling onClick function)
 - Browse
+- Header
+- App Routing
+- Form Validation
+- useRef Hook
+- setup Firebase
+- create SignUp User account using Firebase
 
 ---------
 # Features
