@@ -56,7 +56,7 @@ router.get("/movie/:posterPath", async (req, res) => {
     try {
         const  { posterPath } = req.params; 
         const response = await axios.get(
-            `https://image.tmdb.org/t/p${posterPath}`,
+            `image.tmdb.org/t/p/w500${posterPath}`,
             options
         );
 

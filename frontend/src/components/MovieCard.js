@@ -1,9 +1,11 @@
 import React from 'react'
+import { API_BASE_URL } from '../utils/constants'
 
 const MovieCard = (movie) => {
+    console.log(movie)
   return (
     <div>
-      <img src={`https://api.themoviedb.org/3/network/${movie?.poster_path}/images`} alt='poster'></img>
+      <img src={`${API_BASE_URL}/movie/${movie.poster_path}`} alt='poster'></img>
       <h1>{movie.title}</h1>
     </div>
   )
