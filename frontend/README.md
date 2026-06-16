@@ -34,7 +34,12 @@ Bug Fix: if the user is not logged in Redirect "/browse" to Login Page and vice-
 - Embedded the Youtube video dynamically using movie id and key from trailer video 
 - make the youtube video autoplay and mute to make it autoplay
 - Used Tailwind in MainContainer to look good  
-
+- Build Secondary Component
+- Build Movie List
+- Build Movie Card
+- TMDB Image CDN URL (from Guide -> Basic)
+- Made the Browse Page styled with Tailwind CSS
+- made custom hooks for different movie lists like usePopularMovies
 ---------
 # Features
 -----------
