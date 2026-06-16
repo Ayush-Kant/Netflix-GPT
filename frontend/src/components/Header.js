@@ -49,7 +49,7 @@ const Header = () => {
   return (
     <div >
     <div className='absolute inset-x-0 bg-gradient-to-b from-black z-50 flex justify-between flex-row '>
-      <img className='w-56' 
+      <img className='w-56 z-50' 
       src= {LOGO}
       alt='logo'></img>
       {user && <div className='flex flex-row items-center'>

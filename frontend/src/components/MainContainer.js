@@ -4,12 +4,14 @@ import VideoTitle from './VideoTitle'
 
 const MainContainer = () => {
   return (
-    <div className='relative w-full h-screen'>
-     <VideoBackground/>
-     <VideoTitle />    
-    </div>
+    <div className="relative">
+      <VideoBackground />
+      <VideoTitle />
+
+      {/* Bottom fade */}
       
-  )
-}
+    </div>
+  );
+};
 
 export default MainContainer

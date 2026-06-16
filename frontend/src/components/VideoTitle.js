@@ -5,8 +5,8 @@ const VideoTitle = () => {
   const mainVideo = useSelector(store => store.movies?.nowPlayingMovies?.[0]);
 
   return (
-    <div className="absolute inset-0 z-10 flex flex-col justify-end pb-48 px-14
-                    bg-gradient-to-r from-black/80 via-black/20 to-transparent">
+    <div className="absolute inset-0 z-20 flex flex-col justify-end pb-48 px-14
+                    bg-gradient-to-r from-black/20 via-black/10 to-transparent">
       <h1 className="text-6xl font-extrabold text-white mb-3 [text-shadow:0_4px_12px_rgba(0,0,0,0.9)] max-w-lg leading-tight">
         {mainVideo?.title}
       </h1>
@@ -19,7 +19,7 @@ const VideoTitle = () => {
           ▶︎ Play
         </button>
         <button className="flex items-center gap-2 bg-white/25 text-white font-semibold
-                           px-8 py-3 rounded-md text-lg backdrop-blur-sm hover:bg-white/15 transition">
+                           px-6 py-3 rounded-md text-lg backdrop-blur-sm hover:bg-white/15 transition">
           ⓘ More Info
         </button>
       </div>

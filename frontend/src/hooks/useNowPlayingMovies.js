@@ -7,8 +7,8 @@ const useNowPlayingMovies = () => {
     const dispatch = useDispatch()
     const NowPlayingMovies = async () =>{
       const data = await fetch(`${API_BASE_URL}/now-playing`)
-      const json = await data.json();
-      console.log(json.results)
+      const json = await data?.json();
+      console.log(json?.results)
       dispatch(addNowPlayingMovies(json.results))
     } 
   useEffect(()=>{
