@@ -23,7 +23,58 @@ router.get("/now-playing", async (req, res) => {
 
     res.status(500).json({
       success: false,
-      message: "Failed to fetch movies",
+      message: "Failed to fetch now playing movies",
+    });
+  }
+});
+router.get("/popular", async (req, res) => {
+  try {
+    const response = await axios.get(
+      "https://api.themoviedb.org/3/movie/popular",
+      options
+    );
+
+    res.status(200).json(response.data);
+  } catch (error) {
+    console.error(error.message);
+
+    res.status(500).json({
+      success: false,
+      message: "Failed to fetch popular movies",
+    });
+  }
+});
+router.get("/top-rated", async (req, res) => {
+  try {
+    const response = await axios.get(
+      "https://api.themoviedb.org/3/movie/top_rated",
+      options
+    );
+
+    res.status(200).json(response.data);
+  } catch (error) {
+    console.error(error.message);
+
+    res.status(500).json({
+      success: false,
+      message: "Failed to fetch top rated movies",
+    });
+  }
+});
+router.get("/upcoming", async (req, res) => {
+  try {
+    const response = await axios.get(
+      "https://api.themoviedb.org/3/movie/upcoming",
+      options
+    );
+
+    res.status(200).json(response.data);
+  } catch (error) {
+    console.error(error.message);
+
+    res.status(500).json({
+      success: false,
+      message: "Failed to fetch upcoming movies",
     });
   }
 });

@@ -5,4 +5,4 @@ export const USER_AVATAR =
 'https://i.pinimg.com/736x/91/86/1b/91861b749841221d52122f0c2933d8a6.jpg';
 
 export const API_BASE_URL =
-'https://netflix-gpt-khnf.onrender.com';
+"https://netflix-gpt-khnf.onrender.com/api/movies";

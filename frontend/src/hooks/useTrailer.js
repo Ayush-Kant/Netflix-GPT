@@ -11,7 +11,7 @@ const useTrailer = () => {
     console.log(movieId)
     const getTrailer = async () =>{
         if(!movieId) return;
-      const data = await fetch(`${API_BASE_URL}/api/movies/trailer/${movieId}`)
+      const data = await fetch(`${API_BASE_URL}/trailer/${movieId}`)
       const json = await data.json();
       console.log(json.results)
             const trailer =

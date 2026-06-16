@@ -2,20 +2,29 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 
 const VideoTitle = () => {
-    const mainVideo = useSelector(store => store.movies?.nowPlayingMovies?.[0])
-    const videoTitle = mainVideo?.title
-    const videoOverview = mainVideo?.overview
+  const mainVideo = useSelector(store => store.movies?.nowPlayingMovies?.[0]);
+
   return (
-    <div className="absolute top-0 left-0 z-20 pt-96 px-12 text-white ">
-      <h1 
-      className='text-6xl font-bold text-white [text-shadow:2px_2px_8px_rgba(0,0,0,0.9)] '>{videoTitle}</h1>
-      <h3 
-      className='w-6/12 text-lg text-white [text-shadow:1px_1px_6px_rgba(0,0,0,0.9)]'>{videoOverview}</h3>
-      <button className='border border-s bg-white text-black p-1 px-4 m-4 mx-2 rounded-lg hover:opacity-80'>▶︎  Play</button>
-      <button className='border border-s bg-gray-500 text-white p-1 px-4 m-4 mx-2 rounded-lg opacity-60 hover:opacity-80'>ⓘ More Info</button>
-      
+    <div className="absolute inset-0 z-10 flex flex-col justify-end pb-48 px-14
+                    bg-gradient-to-r from-black/80 via-black/20 to-transparent">
+      <h1 className="text-6xl font-extrabold text-white mb-3 [text-shadow:0_4px_12px_rgba(0,0,0,0.9)] max-w-lg leading-tight">
+        {mainVideo?.title}
+      </h1>
+      <p className="text-base text-gray-200 max-w-md mb-6 line-clamp-3 [text-shadow:0_4px_12px_rgba(0,0,0,0.9)]">
+        {mainVideo?.overview}
+      </p>
+      <div className="flex gap-3">
+        <button className="flex items-center gap-2 bg-white text-black font-bold
+                           px-8 py-3 rounded-md text-lg hover:bg-white/60 transition">
+          ▶︎ Play
+        </button>
+        <button className="flex items-center gap-2 bg-white/25 text-white font-semibold
+                           px-8 py-3 rounded-md text-lg backdrop-blur-sm hover:bg-white/15 transition">
+          ⓘ More Info
+        </button>
+      </div>
     </div>
-  )
-}
+  );
+};
 
 export default VideoTitle
