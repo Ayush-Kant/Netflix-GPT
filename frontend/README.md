@@ -40,6 +40,9 @@ Bug Fix: if the user is not logged in Redirect "/browse" to Login Page and vice-
 - TMDB Image CDN URL (from Guide -> Basic)
 - Made the Browse Page styled with Tailwind CSS
 - made custom hooks for different movie lists like usePopularMovies
+- GPT Search Page
+- GPT Search bar
+- ** Multilungual feature with modularity
 ---------
 # Features
 -----------

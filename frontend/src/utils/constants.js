@@ -6,3 +6,9 @@ export const USER_AVATAR =
 
 export const API_BASE_URL =
 "https://netflix-gpt-khnf.onrender.com/api/movies";
+
+export const SUPPORTED_LANGUAGES = [
+    {identifier: "en", language: "English"},
+    {identifier: "hi", language: "Hindi"},
+    {identifier: "sp", language: "Spanish"}
+]
